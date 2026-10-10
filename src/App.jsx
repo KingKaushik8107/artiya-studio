@@ -10,6 +10,7 @@ import ProductDetails from './pages/ProductDetails';
 import CustomArt from './pages/CustomArt';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/custom-art" element={<CustomArt />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
 
