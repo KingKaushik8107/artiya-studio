@@ -107,5 +107,19 @@
       "portrait",
       "anniversary"
     ]
+  },
+  {
+    "id": "Demo 1",
+    "name": "Demo product",
+    "price": 45,
+    "category": "Custom Art",
+    "description": "ojepjpfwijoiwciwqnfc",
+    "images": [
+      "https://drive.google.com/file/d/10RNzfdmCWVQX4s-NFo289yGlvFSAO_bX/view?usp=drive_link"
+    ],
+    "available": true,
+    "featured": false,
+    "createdAt": "2026-10-10T15:17:02.375Z",
+    "tags": []
   }
 ]
