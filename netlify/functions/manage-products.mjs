@@ -122,7 +122,10 @@ export default async (request) => {
     return response(405, { error: "Method not allowed" });
   }
 
-  if (process.env.CONTEXT !== "production") {
+  const deployContext =
+    process.env.CONTEXT || process.env.NETLIFY_CONTEXT;
+  
+  if (deployContext !== "production") {
     return response(403, { error: "Production only" });
   }
 
