@@ -122,24 +122,23 @@ export default async (request) => {
     return response(405, { error: "Method not allowed" });
   }
 
-  const deployContext =
-    process.env.CONTEXT || process.env.NETLIFY_CONTEXT;
+  const requestUrl = new URL(request.url);
   
-  // if (deployContext !== "production") {
-  //   return response(403, { error: "Production only" });
-  // }
-
-  if (
-    process.env.CONTEXT !== "production" &&
-    process.env.NETLIFY_CONTEXT !== "production"
-  ) {
-    console.error("Deployment context:", {
-      CONTEXT: process.env.CONTEXT,
-      NETLIFY_CONTEXT: process.env.NETLIFY_CONTEXT,
-    });
-  
+  if (requestUrl.hostname !== "artiyastudio.netlify.app") {
     return response(403, { error: "Production only" });
   }
+
+  // if (
+  //   process.env.CONTEXT !== "production" &&
+  //   process.env.NETLIFY_CONTEXT !== "production"
+  // ) {
+  //   console.error("Deployment context:", {
+  //     CONTEXT: process.env.CONTEXT,
+  //     NETLIFY_CONTEXT: process.env.NETLIFY_CONTEXT,
+  //   });
+  
+  //   return response(403, { error: "Production only" });
+  // }
 
   const origin = request.headers.get("origin");
   const expectedOrigin = new URL(request.url).origin;
