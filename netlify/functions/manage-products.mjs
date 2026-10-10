@@ -125,7 +125,19 @@ export default async (request) => {
   const deployContext =
     process.env.CONTEXT || process.env.NETLIFY_CONTEXT;
   
-  if (deployContext !== "production") {
+  // if (deployContext !== "production") {
+  //   return response(403, { error: "Production only" });
+  // }
+
+  if (
+    process.env.CONTEXT !== "production" &&
+    process.env.NETLIFY_CONTEXT !== "production"
+  ) {
+    console.error("Deployment context:", {
+      CONTEXT: process.env.CONTEXT,
+      NETLIFY_CONTEXT: process.env.NETLIFY_CONTEXT,
+    });
+  
     return response(403, { error: "Production only" });
   }
 
